@@ -10,7 +10,7 @@ const resolvers = {
                 })
                 return data
             }
-            throw new Error("You are not loggen in")
+            throw new Error("Please Log in ")
         }
         
     },
