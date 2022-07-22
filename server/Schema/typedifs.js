@@ -2,9 +2,6 @@ const {gql}= require ("apollo-server-express")
 
 
 const typediffs= gql `
-    Query {
-        me:user
-    }
     type Book {
         authors:[String]
         description:String 
@@ -33,13 +30,14 @@ const typediffs= gql `
             link : String
             title: String
     }
+    Query {
+        me:User
+    }
     type Mutation {
         login (email:String, password: String):Auth
         addUser (username: String, email:String, password: String):Auth
-        saveBook (input saveBooks):User 
-        removeBook (bookId: String):User
+        saveBook (book:saveBooks):User 
+        removeBook (bookId: id):User
     }
-
-
 `
 module.exports=typediffs
