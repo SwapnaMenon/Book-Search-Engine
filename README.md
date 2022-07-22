@@ -38,6 +38,7 @@ AS AN avid reader I want to search for new books to read So that I can keep a li
 - THEN I am logged out of the site and presented with a menu with the options Search for Books and Login/Signup and an input field to search for books and a submit button
 
 # Screenshot 
+![demo](./Assets/demo.jpg)
 
 
 ## Instructions how to run the application from the terminal
