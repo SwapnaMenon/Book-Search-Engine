@@ -12,23 +12,40 @@ import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
-  const [userData, setUserData] = useState({});
+  const userData = data?.me || {};
   const [removeBook] = useMutation(REMOVE_BOOK);
   const userDataLength = Object.keys(userData).length;
+  const { loading, data } = useQuery(QUERY_ME);
 
-  useEffect(() => {
-    const getUserData = async () => {
-      try {
+  const SavedBooks = () => {
+      const { loading, data } = useQuery(QUERY_ME);
+      const [removeBook, { error }] = useMutation(REMOVE_BOOK);
+      const userData = data?.me || {};
+      const handleDeleteBook = async (bookId) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
-
         if (!token) {
           return false;
         }
+    
+        try {
+          const { data } = await removeBook({
+            variables: { bookId },
+          });
+    
+          removeBookId(bookId);
+        } catch (err) {
+          console.error(err);
+        }
+      };
+    
+      if (loading) {
+        return <h2>LOADING...</h2>;
+      }
 
-        const response = await getMe(token);
+    const response = await getMe(token);
 
-        if (!response.ok) {
-          throw new Error('something went wrong!');
+      if (!response.ok) {
+        throw new Error('something went wrong!');
         }
 
         const user = await response.json();
@@ -39,12 +56,7 @@ const SavedBooks = () => {
     };
 
     getUserData();
-  }, [userDataLength]);
-  const handleDeleteBook = async (bookId) => {
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
-    if (!token) {
-      return false;
-    }
+   [userDataLength];
     try {
       const response = await deleteBook(bookId, token);
 
@@ -57,7 +69,7 @@ const SavedBooks = () => {
     } catch (err) {
       console.error(err);
     }
-  };
+  
   if (!userDataLength) {
     return <h2>LOADING...</h2>;
   }
@@ -97,4 +109,4 @@ const SavedBooks = () => {
   );
 };
 
-export default SavedBooks;
+export default SavedBooks
