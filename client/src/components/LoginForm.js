@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
-//deleted old API methods to replace with grapgql
+import { Form, 
+  Button, 
+  Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-
 import Auth from '../utils/auth';
 
 const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-
   const [login, { error }] = useMutation(LOGIN_USER);
 
   useEffect(() => {
@@ -36,7 +35,6 @@ const LoginForm = () => {
     }
 
     try {
-//deleted old API method and replaced with GRaphQL mutation
       const { data } = await login({
         variables: { ...userFormData },
       });
@@ -47,7 +45,7 @@ const LoginForm = () => {
       console.error(e);
     }
 
-    // clear form values
+    
     setUserFormData({
       email: '',
       password: '',

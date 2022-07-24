@@ -14,6 +14,7 @@ AS AN avid reader I want to search for new books to read So that I can keep a li
 
 
 ## Instructions how to run the application from the terminal
+- install all required dependencies such as : run build, client npm start and @apollo/client 
 - run the command npm run develop from the terminal to initialize the application.
 
 
