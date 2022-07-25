@@ -7,10 +7,13 @@ AS AN avid reader I want to search for new books to read So that I can keep a li
 
 
 # Mock-up Video
+https://drive.google.com/file/d/1TwUY1ZZkn3xBWAJ9q75msFZifROqjeTN/view
+
 
 
 # Screenshot 
 ![demo](./Assets/demo.jpg)
+
 
 
 ## Instructions how to run the application from the terminal
@@ -22,7 +25,7 @@ AS AN avid reader I want to search for new books to read So that I can keep a li
 - GitHub Repo : https://github.com/SwapnaMenon/Book-Search-Engine
 
 
-- Heroku deployed link:
+
 
 
 
